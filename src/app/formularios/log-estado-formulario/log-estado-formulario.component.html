@@ -1,0 +1,75 @@
+<div class="filtros d-flex mb-3 flex-gap-20">
+ 
+  <fieldset class="me-2">
+      <label class="fs-14px fw-semibold">Filtrar</label>
+      <app-input-busqueda
+       
+      [ngModel]="termino" 
+      (ngModelChange)="setTermino($event)" />
+  </fieldset>
+  <fieldset class="me-2">
+    <label class="fs-14px fw-semibold">Estado</label>
+  <select #selectorEstado class="form-select" name="" (change)="seleccionarEstado(selectorEstado.value)" >
+      
+      <option value="0" selected>Seleccione un estado</option>
+      <option value="-1">Cancelado/Borrado</option>
+      <option value="9">Factura creada por gestor</option>
+      <option value="8">Factura Generada por Bot</option>
+  </select>
+</fieldset>
+  <fieldset class="d-flex align-items-end me-2">
+      <button class="boton primario relleno" (click)="actualizarFiltros()">Buscar</button>
+  </fieldset>
+  <fieldset class="d-flex align-items-end me-2">
+      <button class="boton primario delineado" (click)="limpiarFiltros()">Limpiar filtros</button>
+  </fieldset>
+
+
+  
+</div>
+<div class="table-responsive custom-scroll mb-3">
+  <table class="table-bordered tabla-reportes">
+    <thead>
+        <tr class="fs-12px">
+          <th class="encabezado-tabla celda-centrada" width="100px">RpaForNumerFormu</th>
+          <th class="encabezado-tabla celda-centrada" width="100px">Rut paciente</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Código convenio</th>
+            <th class="encabezado-tabla celda-centrada" width="90px">Convenio</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Fecha atención</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Ambito</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Valor</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Estado</th>
+           
+        </tr>
+    </thead>
+    <tbody class="fs-12px">
+        <tr *ngFor="let formulario of formularios ; let i = index">
+            <td class="celda-centrada">{{ formulario.rpa_for_numerformu }}</td>
+            <td class="celda-centrada">{{ formulario.rut_pac }}</td>
+            <td class="celda-centrada">{{ formulario.cod_convenio }}</td>
+            <td class="celda-centrada">{{ formulario.convenio }}</td>
+            <td class="celda-centrada">{{ formulario.rpa_for_fechatencion }}</td>
+            <td class="celda-centrada">{{ formulario.ambito }}</td>
+            <td class="celda-centrada">{{ formulario.valorcta }}</td>
+            <td class="celda-centrada">{{ formulario.estado?.nombre }}</td>
+           
+        </tr>
+    </tbody>
+</table>
+
+
+
+</div>
+<div class="d-flex justify-content-start">
+<ngb-pagination 
+[collectionSize]="paginadorReportes.totalRegistros ?? 0" 
+[page]="paginadorReportes.pagina"
+[pageSize]="paginadorReportes.limite"
+(pageChange)="paginadorReportes.cambiarPagina($event)"
+[maxSize]="5">
+  <ng-template ngbPaginationFirst>Prim.</ng-template>
+  <ng-template ngbPaginationLast>Ult.</ng-template>
+  <ng-template ngbPaginationPrevious>Ant.</ng-template>
+  <ng-template ngbPaginationNext>Sig.</ng-template>
+</ngb-pagination>
+</div>

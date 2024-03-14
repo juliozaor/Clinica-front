@@ -1,0 +1,206 @@
+<!-- <h1 class="fw-semibold">Marcar prestación - Crear factura</h1>
+<hr>
+
+
+<div class="alert alert-info mensajeError" role="alert" *ngIf="mensajeError.estado">
+  {{mensajeError.mensaje}}
+</div>
+
+<div class="container" *ngIf="!mensajeError.estado">
+<form>
+  <div class="row mt-3">
+
+    <div class="col-4">        
+      <div class="form-group">
+        <label class="form-label">RUT Paciente</label>
+        <div>  
+          <input class="form-control"
+                 type="text"
+                 name="rut_pac"
+                 [(ngModel)] = "factura.rut_pac"
+                 placeholder="" disabled>
+        </div>
+      </div>
+    </div> 
+    <div class="col-4">        
+      <div>
+        <label class="form-label">Código convenio</label>
+        <div >  
+          <input class="form-control"
+                 type="text"
+                 name="cod_convenio"
+                 [(ngModel)] = "factura.cod_convenio"
+                 placeholder="">
+        </div>
+      </div>
+    </div> 
+
+    <div class="col-4">        
+      <div >
+        <label class="form-label">Convenio</label>
+        <div >  
+          <input class="form-control"
+                 type="text"
+                 name="convenio"
+                 [(ngModel)] = "factura.convenio"
+                 placeholder="">
+        </div>
+      </div>
+    </div> 
+    
+  </div>
+
+
+  <div class="row mt-3">
+    
+    <div class="col-4">        
+      <div >
+        <label class="form-label">Ambito</label>
+        <div >  
+          <input class="form-control"
+                 type="text"
+                 name="ambito"
+                 [(ngModel)] = "factura.ambito"
+                 placeholder=""
+                 disabled>
+        </div>
+      </div>
+    </div>   
+    
+    <div class="col-4">        
+      <div >
+        <label class="form-label">RPA por fecha</label>
+        <div >  
+          <input class="form-control"
+                 type="datetime-local"
+                 name="rpa_for_fechadigit"
+                 [(ngModel)] = "factura.rpa_for_fechadigit"
+                 placeholder=""
+                 disabled>
+        </div>
+      </div>
+    </div> 
+
+    <div class="col-4">        
+      <div class="form-group ">
+        <label class="form-label">RPA por número formulario</label>
+        <div >  
+          <input class="form-control"
+                 type="text"
+                 name="rpa_for_numerformu"
+                 [(ngModel)]= "factura.rpa_for_numerformu"
+                 placeholder=""
+                 disabled>
+        </div>
+      </div>
+    </div> 
+
+  </div>
+
+  <div class="row mt-3">
+    
+    <div class="col-4">        
+      <div >
+        <label class="form-label">RPA por fecha de atención</label>
+        <div >  
+          <input class="form-control"
+                 type="datetime-local"
+                 name="rpa_for_fechatencion"
+                 [(ngModel)]= "factura.rpa_for_fechatencion"
+                 placeholder="">
+        </div>
+      </div>
+    </div>     
+
+    <div class="col-4">        
+      <div >
+        <label class="form-label">Valor</label>
+        <div >  
+          <input class="form-control"
+                 type="number"
+                 name="valorcta"
+                 [(ngModel)]= "factura.valorcta"
+                 placeholder="">
+        </div>
+      </div>
+    </div>  
+    <div class="col-4">        
+      <div >
+        <label class="form-label">Código centro</label>
+        <div >  
+          <input class="form-control"
+                 type="text"
+                 name="codigocentroaten"
+                 [(ngModel)]= "factura.codigocentroaten"
+                 placeholder="">
+        </div>
+      </div>
+    </div>  
+  </div>
+
+
+
+   <hr>
+   <h2>Detalles</h2>
+
+   <div class="alert alert-info mensajeError" role="alert" *ngIf="sinDetalle">
+    No hay detalles para esta factura
+  </div>
+
+   <table class="table table-striped" *ngIf="!sinDetalle">
+     <thead>
+       <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Descripción</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let detalle of factura.detalles">           
+         <td>{{ detalle.ate_pre_codigo}}</td>
+         <td>{{ detalle.pre_tip_descripcio}}</td>
+         <td>{{ detalle.pre_pre_descripcio}}</td>
+        
+         
+       </tr>
+      
+     </tbody>
+   </table>
+
+
+   
+ 
+     
+ 
+  <div class="row mt-3">
+    <div class="col-md-2">
+    <div class="input-group">
+      <button type="submit" class="btn btn-outline-primary btnFrm"
+      (click)="actualizar(7,5)"
+      >
+        Crear Factura
+      </button>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="input-group">
+      <button type="submit" class="btn btn-outline-secondary btnFrm"
+      (click)="actualizar(8,2)"
+      >
+        Devolver a Analizar
+      </button>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="input-group">
+      <button type="submit" class="btn btn-outline-secondary btnFrm"
+      (click)="actualizar(9,-1)"
+      >
+        Eliminar - Rechazar
+      </button>
+    </div>
+  </div>
+</div>
+  </form>
+</div>
+ -->

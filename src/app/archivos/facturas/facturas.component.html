@@ -1,0 +1,80 @@
+<h1 class="fw-semibold">Gestionar Facturas</h1>
+<hr>
+
+<div class="filtros d-flex mb-3 flex-gap-20">
+ 
+  <fieldset class="me-2">
+      <label class="fs-14px fw-semibold">Filtrar</label>
+      <app-input-busqueda
+       
+      [ngModel]="termino" 
+      (ngModelChange)="setTermino($event)" />
+  </fieldset>
+  <fieldset class="d-flex align-items-end me-2">
+      <button class="boton primario relleno" (click)="actualizarFiltros()">Buscar</button>
+  </fieldset>
+  <fieldset class="d-flex align-items-end me-2">
+      <button class="boton primario delineado" (click)="limpiarFiltros()">Limpiar filtros</button>
+  </fieldset>
+</div>
+<div class="table-responsive custom-scroll mb-3">
+  <table class="table-bordered tabla-reportes">
+    <thead>
+        <tr class="fs-12px">
+          <th class="encabezado-tabla celda-centrada" width="300px">Achivos</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Código convenio</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Rut</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">factura</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Descripción convenio</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Valor factura</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Fecha factura</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Identificación</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Planilla</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Ambito</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Fecha formulario</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Id factura</th>
+            <th class="encabezado-tabla celda-centrada" width="300px">Tipo factura</th>
+           
+        </tr>
+    </thead>
+    <tbody class="fs-12px">
+        <tr *ngFor="let factura of facturaRPA ; let i = index">            
+          <td class="celda-centrada">
+            <span class="cursor-pointer" (click)="abrirRegistros(factura.factura)"><mat-icon>folder_open</mat-icon> </span>
+        </td>
+            <td class="celda-centrada">{{ factura.cod_convenio}} </td>
+            <td class="celda-centrada">{{ factura.rut }} </td>
+            <td class="celda-centrada">{{ factura.factura }} </td>
+            <td class="celda-centrada">{{ factura.descripcion_convenio }} </td>
+            <td class="celda-centrada">{{ factura.vr_factura }} </td>
+            <td class="celda-centrada">{{ factura.fecha_facturacion }} </td>
+            <td class="celda-centrada">{{ factura.documento_identificacion }} </td>
+            <td class="celda-centrada">{{ factura.nro_planilla }} </td>
+            <td class="celda-centrada">{{ factura.ambito }} </td>
+            <td class="celda-centrada">{{ factura.fecha_formulario }} </td>
+            <td class="celda-centrada">{{ factura.id_factura }} </td>
+            <td class="celda-centrada">{{ factura.tipo_factura }} </td>
+           
+        </tr>
+        <tr *ngIf="facturaRPA.length === 0">
+          <td colspan="6">No se encontraron datos.</td>
+      </tr>
+    </tbody>
+</table>
+
+
+
+</div>
+<div class="d-flex justify-content-start">
+<ngb-pagination 
+[collectionSize]="paginadorReportes.totalRegistros ?? 0" 
+[page]="paginadorReportes.pagina"
+[pageSize]="paginadorReportes.limite"
+(pageChange)="paginadorReportes.cambiarPagina($event)"
+[maxSize]="5">
+  <ng-template ngbPaginationFirst>Prim.</ng-template>
+  <ng-template ngbPaginationLast>Ult.</ng-template>
+  <ng-template ngbPaginationPrevious>Ant.</ng-template>
+  <ng-template ngbPaginationNext>Sig.</ng-template>
+</ngb-pagination>
+</div>

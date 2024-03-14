@@ -1,0 +1,23 @@
+<h1 class="fw-semibold">Informes de logs</h1>
+<hr>
+<div class="filtros d-flex mb-3 flex-gap-20">
+    <fieldset>
+        <label class="fs-14px fw-semibold">Tipo de consulta</label>
+      <select #selectorLog class="form-select" name="" (change)="seleccionarLog(selectorLog.value)" >
+          
+          <option value="1" [defaultSelected]="1">Login</option>
+          <option value="2">Formularios</option>
+          <option value="3">Respuesta Robot</option>
+          <option value="4">Oracle</option>
+          <option value="5">Formularios procesados</option>
+      </select>
+  </fieldset>
+            
+          </div>
+
+          <app-log-login *ngIf="logSeleccionado=='1'"></app-log-login>
+          <app-log-form *ngIf="logSeleccionado=='2'"></app-log-form>
+          <app-log-robot *ngIf="logSeleccionado=='3'"></app-log-robot>
+          <app-log-oracle *ngIf="logSeleccionado=='4'"></app-log-oracle>
+          <app-log-estado-formulario *ngIf="logSeleccionado=='5'"></app-log-estado-formulario>
+

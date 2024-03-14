@@ -1,0 +1,78 @@
+<h1 class="fw-semibold">Registros</h1>
+<hr>
+
+<div class="filtros d-flex mb-3 flex-gap-20">
+ 
+  <fieldset class="me-2">
+      <label class="fs-14px fw-semibold">Filtrar</label>
+      <app-input-busqueda
+       
+      [ngModel]="termino" 
+      (ngModelChange)="setTermino($event)" />
+  </fieldset>
+  <fieldset class="d-flex align-items-end me-2">
+      <button class="boton primario relleno" (click)="actualizarFiltros()">Buscar</button>
+  </fieldset>
+  <fieldset class="d-flex align-items-end me-2">
+      <button class="boton primario delineado" (click)="limpiarFiltros()">Limpiar filtros</button>
+  </fieldset>
+</div>
+<div class="table-responsive custom-scroll mb-3">
+  <table class="table-bordered tabla-reportes">
+    <thead>
+        <tr class="fs-12px">
+          <th class="encabezado-tabla celda-centrada" width="100px">id</th>
+          <th class="encabezado-tabla celda-centrada" width="100px">Nombre</th>            
+            <th class="encabezado-tabla celda-centrada" width="100px">Estado</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Tipo de soporte</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Hora Inicio</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Hora Fin</th>
+            <th class="encabezado-tabla celda-centrada " width="200px">Acciones</th>           
+        </tr>
+    </thead>
+    <tbody class="fs-12px">
+        <tr *ngFor="let registro of registroRpa ; let i = index">            
+          
+            <td class="celda-centrada">{{ registro.id}} </td>
+            <td class="celda-centrada">{{ registro.nombre_pdf }} </td>
+            <td class="celda-centrada">{{ registro.estado }} </td>
+            <td class="celda-centrada">{{ registro.tipo_soporte }} </td>  
+            <td class="celda-centrada">{{ registro.hora_inicio }} </td>
+            <td class="celda-centrada">{{ registro.hora_fin }} </td>  
+            <td class="celda-centrada" *ngIf="registro.nombre_pdf">
+              <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 1)"><mat-icon>file_open</mat-icon> </span>
+              <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 2)"><mat-icon>file_download</mat-icon> </span>
+              <span class="cursor-pointer" (click)="actualizarArchivo(registro.nombre_pdf, registro.factura)"><mat-icon>drive_file_move</mat-icon> </span>
+              <span class="cursor-pointer" (click)="eliminarArchivo(registro.nombre_pdf, registro.factura)"><mat-icon>delete</mat-icon> </span>
+            </td>
+           
+           
+        </tr>
+        <tr *ngIf="registroRpa.length === 0">
+          <td colspan="6">No se encontraron datos.</td>
+      </tr>
+    </tbody>
+</table>
+
+
+
+</div>
+<div class="d-flex justify-content-start">
+<ngb-pagination 
+[collectionSize]="paginadorReportes.totalRegistros ?? 0" 
+[page]="paginadorReportes.pagina"
+[pageSize]="paginadorReportes.limite"
+(pageChange)="paginadorReportes.cambiarPagina($event)"
+[maxSize]="5">
+  <ng-template ngbPaginationFirst>Prim.</ng-template>
+  <ng-template ngbPaginationLast>Ult.</ng-template>
+  <ng-template ngbPaginationPrevious>Ant.</ng-template>
+  <ng-template ngbPaginationNext>Sig.</ng-template>
+</ngb-pagination>
+</div>
+
+<app-modal-ver-archivo 
+  #modalVerArchivo />
+
+<app-modal-actualizar-archivo
+  #modalActualizarArchivo />

@@ -1,0 +1,11 @@
+.bienvenida {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+  color: rgb(21, 40,75);
+}
+.logo-centro{
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
