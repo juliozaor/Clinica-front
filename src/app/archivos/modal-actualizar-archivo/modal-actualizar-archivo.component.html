@@ -4,12 +4,20 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <select [(ngModel)]="tipoSoporte" name="tipoSoporte">
+   <!--  <select [(ngModel)]="tipoSoporte" name="tipoSoporte">
       <option value="tipo1">Tipo 1</option>
       <option value="tipo2">Tipo 2</option>
       <option value="tipo3">Tipo 3</option>
-    </select>
-    <input type="file" (change)="onFileSelected($event)">
-    <button (click)="cargarArchivo()">Cargar Archivo</button>
+    </select> -->
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Seleccione un archivo</label>
+      <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)">
+    </div>
+
+    
+  <!--   <input type="file" (change)="onFileSelected($event)"> -->
+    
+    <button class="boton primario delineado" (click)="cargarArchivo()">Cargar Archivo</button>
   </div>
 </ng-template>
+<app-popup #popup />

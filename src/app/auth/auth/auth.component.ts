@@ -8,8 +8,6 @@ import { IniciarSesionRespuesta } from '../../models/IniciarSesionRespuesta';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 
-//SweetAlrt2
-import 'sweetalert2/src/sweetalert2.scss';
 import Swal from 'sweetalert2';
 
 @Component({

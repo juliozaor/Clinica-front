@@ -6,7 +6,7 @@ export interface LogForm{
   accion_id: number;
   estado: number;
   creacion: string;
-  accion: {
+  accion?: {
     accion: string
 }
 }

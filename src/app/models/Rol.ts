@@ -16,10 +16,10 @@ export interface Modulo{
   estado: boolean;
   creacion: Date;
   actualizacion: Date;
-  submodulos: Submodulo[]
+  funcionalidad: Funcionalidad[]
 }
 
-export interface Submodulo{
+export interface Funcionalidad{
   id: string;
   nombre: string;
   nombreMostrar: string,

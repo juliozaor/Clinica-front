@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalVerArchivoComponent } from './modal-ver-archivo/modal-ver-archivo.component';
 import { ModalActualizarArchivoComponent } from './modal-actualizar-archivo/modal-actualizar-archivo.component';
+import { ModalGuardarArchivoComponent } from './modal-guardar-archivo/modal-guardar-archivo.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AlertasModule } from '../alertas/alertas.module';
 
 
 
@@ -19,6 +22,7 @@ import { ModalActualizarArchivoComponent } from './modal-actualizar-archivo/moda
     RegistrosComponent,
     InputBusquedaComponent,
     ModalActualizarArchivoComponent,
+    ModalGuardarArchivoComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import { ModalActualizarArchivoComponent } from './modal-actualizar-archivo/moda
     NgbModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    NgSelectModule,
+    AlertasModule,
   ]
 })
 export class ArchivosModule { }

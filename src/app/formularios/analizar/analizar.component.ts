@@ -3,8 +3,6 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FacturaModel } from '../../models/factura.model';
 import { FormsService } from '../../services/forms.service';
 
-//SweetAlrt2
-import 'sweetalert2/src/sweetalert2.scss';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

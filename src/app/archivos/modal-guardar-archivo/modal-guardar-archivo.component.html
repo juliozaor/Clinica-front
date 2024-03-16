@@ -1,0 +1,31 @@
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title fs-14px  fw-bolder">Cargar archivo</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formulario">
+    <fieldset class="me-2">
+      <label>Soporte <span class="validacion">*</span></label>                 
+          <ng-select formControlName="tiposoporte" class="form-select">
+            <ng-option *ngFor="let soporte of soportes" [value]="soporte.nombre_soporte">{{ soporte.nombre_soporte }}</ng-option>
+              <ng-option *ngFor="let soporte of soportes" [value]="soporte.nombre_soporte">{{ soporte.nombre_soporte }}</ng-option>
+          </ng-select>
+          <app-validacion
+          [validacion]="'required'"
+          [texto]="'El soporte es requerido.'"
+          [control]="this.formulario.controls['soporteS']"
+          />    
+  </fieldset>
+</form>
+    <div class="mb-3 mt-3">
+      <label for="formFile" class="form-label">Seleccione un archivo</label>
+      <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)">
+    </div>    
+    <button class="boton primario delineado" (click)="cargarArchivo()">Cargar Archivo</button>
+ 
+  </div>
+
+  
+</ng-template>
+<app-popup #popup />

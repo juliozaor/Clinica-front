@@ -19,24 +19,24 @@
     <thead>
         <tr class="fs-12px">
             <th class="encabezado-tabla celda-centrada" width="100px">Id</th>
-            <th class="encabezado-tabla celda-centrada" width="100px">Usuario</th>
-            <th class="encabezado-tabla celda-centrada" width="100px">Rol</th>
-            <th class="encabezado-tabla celda-centrada" width="100px">RpaForNumerFormu</th>
-            <th class="encabezado-tabla celda-centrada" width="100px">Estado</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Factura</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Archivo</th>
             <th class="encabezado-tabla celda-centrada" width="100px">Acción</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Estado</th>
+            <th class="encabezado-tabla celda-centrada" width="100px">Usuario</th>
             <th class="encabezado-tabla celda-centrada" width="300px">Fecha</th>
            
         </tr>
     </thead>
     <tbody class="fs-12px">
-        <tr *ngFor="let reporteForm of logForm ; let i = index">
-            <td class="celda-centrada">{{ reporteForm.id }}</td>
-            <td class="celda-centrada">{{ reporteForm.usuario }}</td>
-            <td class="celda-centrada">{{ reporteForm.rol }}</td>
-            <td class="celda-centrada">{{ reporteForm.rpa_for_numerformu }}</td>
-            <td class="celda-centrada">{{ reporteForm.estado }}</td>
-            <td class="celda-centrada">{{ reporteForm.accion?.accion }}</td>
-            <td class="celda-centrada">{{ reporteForm.creacion }}</td>
+        <tr *ngFor="let logArchivo of logArchivos ; let i = index">
+            <td class="celda-centrada">{{ logArchivo.id }}</td>
+            <td class="celda-centrada">{{ logArchivo.factura }}</td>
+            <td class="celda-centrada">{{ logArchivo.archivo }}</td>
+            <td class="celda-centrada">{{ logArchivo.accion }}</td>
+            <td class="celda-centrada">{{ logArchivo.estado }}</td>
+            <td class="celda-centrada">{{ logArchivo.usuario }}</td>
+            <td class="celda-centrada">{{ logArchivo.creacion }}</td>
            
         </tr>
     </tbody>

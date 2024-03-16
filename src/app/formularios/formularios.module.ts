@@ -16,6 +16,7 @@ import { LogFormComponent } from './log-form/log-form.component';
 import { LogRobotComponent } from './log-robot/log-robot.component';
 import { LogOracleComponent } from './log-oracle/log-oracle.component';
 import { LogEstadoFormularioComponent } from './log-estado-formulario/log-estado-formulario.component';
+import { LogArchivosComponent } from './log-archivos/log-archivos.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LogEstadoFormularioComponent } from './log-estado-formulario/log-estado
     LogFormComponent,
     LogRobotComponent,
     LogOracleComponent,
-    LogEstadoFormularioComponent
+    LogEstadoFormularioComponent,
+    LogArchivosComponent
   ],
   imports: [
     CommonModule,

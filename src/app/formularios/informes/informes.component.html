@@ -10,6 +10,7 @@
           <option value="3">Respuesta Robot</option>
           <option value="4">Oracle</option>
           <option value="5">Formularios procesados</option>
+          <option value="6">Archivos</option>
       </select>
   </fieldset>
             
@@ -20,4 +21,5 @@
           <app-log-robot *ngIf="logSeleccionado=='3'"></app-log-robot>
           <app-log-oracle *ngIf="logSeleccionado=='4'"></app-log-oracle>
           <app-log-estado-formulario *ngIf="logSeleccionado=='5'"></app-log-estado-formulario>
+          <app-log-archivos *ngIf="logSeleccionado=='6'"></app-log-archivos>
 

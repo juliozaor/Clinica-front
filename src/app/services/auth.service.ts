@@ -65,17 +65,17 @@ export class AuthService {
     return this.userToken.length > 2;
   }
 
-  private guardardatos(resp: any) {
-    console.log(resp);
-    
+  private guardardatos(resp: any) {    
     localStorage.setItem('rol', resp.rol.id);
     localStorage.setItem('nombre', resp.usuario.nombre);
     localStorage.setItem('modulos', JSON.stringify(resp.rol.modulos));
+    console.log();
+    
   }
 
   obtenerModulos() {
     if (localStorage.getItem('modulos')) {
-      this.modulos = JSON.parse(localStorage.getItem('modulos')!);
+      this.modulos = JSON.parse(localStorage.getItem('modulos')!);      
     } else {
       this.modulos = [];
     }

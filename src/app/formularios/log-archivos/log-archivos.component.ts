@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
-import { LogForm } from '../../compartido/modelos/LogForms';
-import { LogsService } from '../../services/logs.service';
+import { LogArchivos } from '../../compartido/modelos/LogArchivos';
 import { Paginador } from '../../compartido/modelos/Paginador';
 import { FiltrosLogs } from '../../compartido/modelos/FiltrosLogs';
+import { LogsService } from '../../services/logs.service';
 import { Observable } from 'rxjs';
 import { Paginacion } from '../../compartido/modelos/Paginacion';
 
 @Component({
-  selector: 'app-log-form',
-  templateUrl: './log-form.component.html',
-  styleUrl: './log-form.component.css'
+  selector: 'app-log-archivos',
+  templateUrl: './log-archivos.component.html',
+  styleUrl: './log-archivos.component.css'
 })
-export class LogFormComponent {
+export class LogArchivosComponent {
+
 
   private readonly paginaInicial = 1;
   private readonly limiteInicial = 5
   paginadorReportes: Paginador<FiltrosLogs>
-  logForm: LogForm[] = []
+  logArchivos: LogArchivos[] = []
 
   termino: string = ""
 
@@ -32,11 +33,9 @@ export class LogFormComponent {
   }
   obtenerLogs = (pagina: number, limite: number, filtros?:FiltrosLogs)=>{
     return new Observable<Paginacion>( sub => {
-      this.servicioLogs.consultar(pagina, limite, filtros, '2' ).subscribe({
-        next: ( respuesta:any )=>{      
-          console.log(respuesta.logs);
-              
-          this.logForm = respuesta.logs
+      this.servicioLogs.consultar(pagina, limite, filtros, '6' ).subscribe({
+        next: ( respuesta:any )=>{          
+          this.logArchivos = respuesta.logs
           sub.next(respuesta.paginacion)
         }
       })
@@ -55,5 +54,4 @@ export class LogFormComponent {
   setTermino(termino: string){
     this.termino = termino
   }
-
 }

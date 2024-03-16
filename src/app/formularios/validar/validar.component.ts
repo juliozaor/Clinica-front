@@ -4,8 +4,6 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormsService } from '../../services/forms.service';
 import { FacturaModel } from '../../models/factura.model';
 
-//SweetAlrt2
-import 'sweetalert2/src/sweetalert2.scss';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 

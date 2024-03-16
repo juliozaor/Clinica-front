@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FiltrosLogs } from '../compartido/modelos/FiltrosLogs';
 import { environment } from '../../environments/environment';
+import { Soporte } from '../compartido/modelos/Soporte';
 
 @Injectable({
   providedIn: 'root'
@@ -46,13 +47,22 @@ export class ArchivosService {
 
   actualizarArchivo(formData: FormData) {
     let endpoint = `archivos`;   
-    console.log(`${this.urlBackend}${endpoint}`);
-    
     return this.http.put(`${this.urlBackend}${endpoint}`,formData, {headers: this.headersForm})
   }
 
-  eliminarArchivo(nombre: string, factura:string) {
-    let endpoint = `archivos?factura=${factura}&nombre=${nombre}`;   
+  guardarArchivo(formData: FormData) {
+    let endpoint = `archivos`;       
+    return this.http.post(`${this.urlBackend}${endpoint}`,formData, {headers: this.headersForm})
+  }
+
+  obtenerSoportes() {
+    let endpoint = `archivos/soportes`;       
+    return this.http.get<{soportes: Soporte[]}>(`${this.urlBackend}${endpoint}`,{headers: this.headersForm})
+  }
+
+
+  eliminarArchivo(nombre: string, factura:string, id:number) {
+    let endpoint = `archivos?factura=${factura}&nombre=${nombre}&id=${id}`;   
     return this.http.delete(`${this.urlBackend}${endpoint}`,{headers: this.headers})
   }
 }

@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArchivosService } from '../archivos.service';
+import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 
 @Component({
   selector: 'app-modal-actualizar-archivo',
@@ -9,9 +10,10 @@ import { ArchivosService } from '../archivos.service';
 })
 export class ModalActualizarArchivoComponent {
   @ViewChild('modal') modal!: ElementRef
+  @ViewChild('popup') popup!: PopupComponent
   nombre:string=''
   factura:string=''
-  tipoSoporte: string = '';
+ /*  tipoSoporte: string = ''; */
   archivoSeleccionado: File | null = null;
 
   constructor(private servicioModal: NgbModal, private servicioArchivos: ArchivosService){
@@ -23,7 +25,7 @@ export class ModalActualizarArchivoComponent {
 
   cargarArchivo() {
     if (!this.archivoSeleccionado) {
-      console.error('No se ha seleccionado un archivo');
+      this.popup.abrirPopupFallido("Seleccione un archivo.", "No se ha seleccionado un archivo")
       return;
     }
 
@@ -31,13 +33,13 @@ export class ModalActualizarArchivoComponent {
     formData.append('archivo', this.archivoSeleccionado);
     formData.append('nombre', this.nombre);
     formData.append('factura', this.factura);
-    formData.append('tipoSoporte', this.tipoSoporte);
+   /*  formData.append('tipoSoporte', this.tipoSoporte); */
 
     this.servicioArchivos
       .actualizarArchivo(formData)
       .subscribe({
         next: (respuesta: any) => {
-          console.log(respuesta);
+          this.popup.abrirPopupExitoso(respuesta.mensaje)
           this.cerrar();          
         },
       });
