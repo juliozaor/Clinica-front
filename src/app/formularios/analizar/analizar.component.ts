@@ -86,6 +86,11 @@ export class AnalizarComponent {
   
   }
 
+  public limpiar(): void {
+    this.forma.reset()
+    this.forma2.reset()
+  }
+
   actualizar(boton: number, estado: number) {
       Swal.fire({
       icon:'info',
@@ -117,6 +122,7 @@ export class AnalizarComponent {
           }
           
         });
+        this.limpiar()
       },
       (err) => {
         console.log({ err });
