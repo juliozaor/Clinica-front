@@ -9,12 +9,11 @@
       <label>Soporte <span class="validacion">*</span></label>                 
           <ng-select formControlName="tiposoporte" class="form-select">
             <ng-option *ngFor="let soporte of soportes" [value]="soporte.nombre_soporte">{{ soporte.nombre_soporte }}</ng-option>
-              <ng-option *ngFor="let soporte of soportes" [value]="soporte.nombre_soporte">{{ soporte.nombre_soporte }}</ng-option>
           </ng-select>
           <app-validacion
           [validacion]="'required'"
           [texto]="'El soporte es requerido.'"
-          [control]="this.formulario.controls['soporteS']"
+          [control]="this.formulario.controls['soporte']"
           />    
   </fieldset>
 </form>

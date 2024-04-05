@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArchivosService } from '../archivos.service';
 import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-modal-actualizar-archivo',
   templateUrl: './modal-actualizar-archivo.component.html',
@@ -29,6 +31,13 @@ export class ModalActualizarArchivoComponent {
       return;
     }
 
+    Swal.fire({
+      icon:'info',
+      allowOutsideClick: false,      
+      text: 'Espere por favor...',
+    });
+    Swal.showLoading();
+
     const formData = new FormData()
     formData.append('archivo', this.archivoSeleccionado);
     formData.append('nombre', this.nombre);
@@ -39,6 +48,7 @@ export class ModalActualizarArchivoComponent {
       .actualizarArchivo(formData)
       .subscribe({
         next: (respuesta: any) => {
+          Swal.close();
           this.popup.abrirPopupExitoso(respuesta.mensaje)
           this.cerrar();          
         },

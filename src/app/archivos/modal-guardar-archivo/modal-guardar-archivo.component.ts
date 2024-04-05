@@ -5,6 +5,8 @@ import { Soporte } from '../../compartido/modelos/Soporte';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-modal-guardar-archivo',
   templateUrl: './modal-guardar-archivo.component.html',
@@ -39,12 +41,20 @@ export class ModalGuardarArchivoComponent {
       this.popup.abrirPopupFallido("Seleccione un archivo.", "No se ha seleccionado un archivo")
       return;
     }
+    
     const controls = this.formulario.controls
     this.tiposoporte = controls['tiposoporte'].value    
     if(this.tiposoporte == '' || this.tiposoporte == undefined){
       this.popup.abrirPopupFallido("Seleccione un soporte.", "Tipo de soporte es obligatorio")
       return;
     }
+
+    Swal.fire({
+      icon:'info',
+      allowOutsideClick: false,      
+      text: 'Espere por favor...',
+    });
+    Swal.showLoading();
 
     const formData = new FormData()
     formData.append('archivo', this.archivoSeleccionado);
@@ -55,6 +65,7 @@ export class ModalGuardarArchivoComponent {
       .guardarArchivo(formData)
       .subscribe({
         next: (respuesta: any) => {
+          Swal.close();
           this.popup.abrirPopupExitoso(respuesta.mensaje)
           this.registroCreado.emit();
           this.cerrar();          

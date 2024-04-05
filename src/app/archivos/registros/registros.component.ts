@@ -130,11 +130,18 @@ eliminarArchivo(nombre:string, factura:string, id:number){
     cancelButtonText:"Cancelar"
   }).then((result) => {
     if (result.isConfirmed) {
+      Swal.fire({
+        icon:'info',
+        allowOutsideClick: false,      
+        text: 'Espere por favor...',
+      });
+      Swal.showLoading();
+
       this.servicioArchivos
       .eliminarArchivo(nombre, factura, id)
       .subscribe({
         next: (respuesta: any) => {
-          console.log(respuesta);
+          Swal.close();
           this.popup.abrirPopupExitoso(respuesta.mensaje)
           this.paginadorReportes.refrescar()
         },

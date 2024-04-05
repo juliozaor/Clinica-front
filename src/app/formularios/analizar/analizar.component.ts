@@ -98,7 +98,6 @@ export class AnalizarComponent {
       text: 'Espere por favor...',
     });
     Swal.showLoading();
-    Swal.close();
     
     this.frm.actualizar(estado, boton, this.factura).subscribe(
       (resp: any) => {
