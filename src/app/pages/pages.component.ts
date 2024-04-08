@@ -16,6 +16,12 @@ export class PagesComponent {
   sidenav!: MatSidenav;
 
   modulos: ModuloModel[] = [];
+  mAdministrador: ModuloModel[] = [];
+  mFormularios: ModuloModel[] = [];
+  mPdf?: ModuloModel;
+
+  mostrarA: boolean = false;
+  mostrarF: boolean = false;
 
   faTrash = faTrash;
 
@@ -26,6 +32,7 @@ export class PagesComponent {
     private router: Router
   ) {
     this.modulos = this.auth.obtenerModulos();
+    this.distribuirModulos()
     
   }
 
@@ -43,11 +50,30 @@ export class PagesComponent {
   }
 
   // ocultar panel lateral
-  mostrarBotones: boolean = false;
+  
 
- /*  toggleBotones() {
-    this.mostrarBotones = !this.mostrarBotones;
-  } */
+  toggleBotones(b:number) {
+    if(b ==1){
+    this.mostrarA = !this.mostrarA
+  }
+  if(b==2){
+    this.mostrarF = !this.mostrarF
+  }
+  }
+
+  distribuirModulos(){
+    this.modulos.forEach(modulo => {
+      if(modulo.parent == 0){
+        this.mAdministrador.push(modulo);
+      }
+      if(modulo.parent == 1){
+        this.mFormularios.push(modulo);
+      }
+      if(modulo.parent == 2){
+        this.mPdf = modulo;
+      }
+    });
+  }
 
   salir() {
     this.auth.logout();

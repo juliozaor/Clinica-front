@@ -14,10 +14,11 @@
     </a>
     <mat-divider></mat-divider>
     <br>
-    
+
+
+<!-- 
     <div *ngFor="let modulo of modulos">
       <ng-container *ngIf="modulo.parametro">
-        <!-- Mostrar este enlace si modulo.parametro tiene información -->
         <a mat-button class="menu-button" [routerLink]="[modulo.ruta, modulo.parametro]" routerLinkActive="active">
           <mat-icon>{{modulo.icono}}</mat-icon>
           <span>{{modulo.nombre}}</span>
@@ -25,7 +26,6 @@
       </ng-container>
     
       <ng-container *ngIf="!modulo.parametro">
-        <!-- Mostrar este enlace si modulo.parametro está vacío o es nulo -->
         <a mat-button class="menu-button" [routerLink]="[modulo.ruta]" routerLinkActive="active">
           <mat-icon>{{modulo.icono}}</mat-icon>
           <span>{{modulo.nombre}}</span>
@@ -33,31 +33,67 @@
       </ng-container>
     
       <mat-divider></mat-divider>
-    </div>
-   <!--  <button mat-button class="menu-button" (click)="toggleBotones()">
-      <mat-icon>admin_panel_settings</mat-icon>
-      <span>Administrar</span>
-    </button> -->
-    <!-- <mat-divider></mat-divider> -->
-
-    
-
-    <!-- <a mat-button class="menu-button" *ngIf="mostrarBotones" [routerLink]="['formulario/analizar']" routerLinkActive="active">   
-      <span>Analizar</span>
-    </a>
-    <mat-divider></mat-divider> -->
+    </div> -->
 
 
-  <!--   <a mat-button class="menu-button" *ngIf="mostrarBotones" [routerLink]="['formulario/gestionar']" routerLinkActive="active">
-   
-      <span>Gestionar</span>
-    </a>
+    <!-- ================ -->
+    <ng-container *ngIf="mAdministrador">
+      <button  mat-button class="menu-button" (click)="toggleBotones(1)">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span>Administración</span>
+      </button>
+      <ng-container *ngIf="mostrarA">
+      <div *ngFor="let mAdmin of mAdministrador">
+          <a mat-button class="menu-button sub-menu" [routerLink]="[mAdmin.ruta]" routerLinkActive="active">
+            <mat-icon>{{mAdmin.icono}}</mat-icon>
+            <span>{{mAdmin.nombre}}</span>
+          </a>
+      
+        <mat-divider></mat-divider>
+      </div>
+    </ng-container>
+    </ng-container>
+
     <mat-divider></mat-divider>
-    <a mat-button class="menu-button" *ngIf="mostrarBotones" [routerLink]="['formulario/validar']" routerLinkActive="active">
-   
-      <span>Validar</span>
-    </a>
-    <mat-divider></mat-divider> -->
+
+    <ng-container *ngIf="mFormularios">
+      <button  mat-button class="menu-button" (click)="toggleBotones(2)">
+        <mat-icon>document_scanner</mat-icon>
+        <span>Analizar Formularios</span>
+      </button>
+      <ng-container *ngIf="mostrarF">
+      <div *ngFor="let mForm of mFormularios">
+        <ng-container *ngIf="mForm.parametro">
+        
+          <a mat-button class="menu-button sub-menu" [routerLink]="[mForm.ruta, mForm.parametro]" routerLinkActive="active">
+            <mat-icon>{{mForm.icono}}</mat-icon>
+            <span>{{mForm.nombre}}</span>
+          </a>
+        </ng-container>
+      
+        <ng-container *ngIf="!mForm.parametro">          
+          <a mat-button class="menu-button sub-menu" [routerLink]="[mForm.ruta]" routerLinkActive="active">
+            <mat-icon>{{mForm.icono}}</mat-icon>
+            <span>{{mForm.nombre}}</span>
+          </a>
+        </ng-container>
+      
+        <mat-divider></mat-divider>
+      </div>
+    </ng-container>
+    </ng-container>
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="mPdf">
+      <a mat-button class="menu-button" [routerLink]="[mPdf.ruta]" routerLinkActive="active">
+        <mat-icon>{{mPdf.icono}}</mat-icon>
+        <span>{{mPdf.nombre}}</span>
+      </a>
+</ng-container>
+
+<mat-divider></mat-divider>
+
+
   </mat-sidenav>
   
   
