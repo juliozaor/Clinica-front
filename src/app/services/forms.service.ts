@@ -24,9 +24,19 @@ export class FormsService {
     return this.http.get(`${this.urlBackend}${endpoint}`,{headers: this.headers})
   }
 
+  consultarAgrupada(estado: number) {
+    const endpoint = `facturas/agrupadas?estado=${estado}`;
+    return this.http.get(`${this.urlBackend}${endpoint}`,{headers: this.headers})
+  }
+
   actualizar(estado: number, boton:number, factura:FacturaModel) {
     delete factura.detalles    
     const endpoint = `facturas/${estado}/${boton}`;
+    return this.http.patch(`${this.urlBackend}${endpoint}`,factura, {headers: this.headers})
+  }
+
+  actualizarAgrupadas(estado: number, boton:number, factura:FacturaModel[]) {
+    const endpoint = `facturas/agrupados/${estado}/${boton}`;
     return this.http.patch(`${this.urlBackend}${endpoint}`,factura, {headers: this.headers})
   }
 

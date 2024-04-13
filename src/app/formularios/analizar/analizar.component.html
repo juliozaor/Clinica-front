@@ -7,91 +7,13 @@
   </div>
 
 <div class="container" *ngIf="!mensajeError.estado">
-  <div class="row">
-    <div class="col-5">
-      <form [formGroup]="forma"
-      (ngSubmit)="actualizaFactura()"
-      id="factura-form" 
-      class="form" 
-      action="" 
-      method="post">
-        <div class="row mt-3">
-          <div class="col-6">        
-            <div class="form-group">
-              <label class="form-label">Número de factura</label>
-              <div [ngClass]="{'validacion': !forma.get('nfactura')?.valid}">  
-                <input type="text" 
-                class="form-control"
-                formControlName="nfactura">
-                <div *ngIf="forma.controls['nfactura'].errors && forma.controls['nfactura'].errors['required'] && forma.controls['nfactura'].dirty"
-                class="form-control-feedback">
-                    El número de factura es necesario
-                </div> 
-              </div>
-            </div>
-          </div> 
-      
-          <div class="col-6">        
-            <div class="input-group contbtnfrm2">
-              <button type="submit" class="btn btn-primary btnFrm2"
-              >
-              Factura generada
-            </button>
-          </div>
-          </div> 
-         
-          
-        </div>
-      </form>
-    </div>
-    <div class="col-5">
-      <form [formGroup]="forma2"
-      (ngSubmit)="eliminarFormulario()"
-      id="eliminar-form" 
-      class="form" 
-      action="" 
-      method="post">
-        <div class="row mt-3">
-          <div class="col-6">        
-            <div class="form-group">
-              <label class="form-label">Causa de eliminación</label>
-              <div [ngClass]="{'validacion': !forma2.get('causalid')?.valid}">  
-                <select class="form-select" aria-label="Default select example" formControlName="causalid">
-                  <option *ngFor="let causa of causas" [value]="causa.id">{{ causa.nombre }}</option>
-                </select>
-
-                <div *ngIf="forma2.controls['causalid'].errors && forma2.controls['causalid'].errors['required'] && forma2.controls['causalid'].dirty"
-                class="form-control-feedback">
-                    El motivo de eliminación es necesario
-                </div> 
-              </div>
-            </div>
-          </div> 
-      
-          <div class="col-6">        
-            <div class="input-group contbtnfrm2">
-              <button type="submit" class="btn btn-danger btnFrm2"
-              >
-              Eliminar - Rechazar
-            </button>
-          </div>
-          </div> 
-         
-          
-        </div>
-      </form>
-    </div>
-    <div class="col-4"></div>
-  </div>
-
-
   <form>
     
     <div class="row mt-3">
 
       <div class="col-4">        
         <div class="form-group">
-          <label class="form-label">RUT Paciente</label>
+          <label class="form-label">Documento Paciente</label>
           <div>  
             <input class="form-control"
                    type="text"
@@ -116,7 +38,7 @@
 
       <div class="col-4">        
         <div >
-          <label class="form-label">Convenio</label>
+          <label class="form-label">Nombre Convenio</label>
           <div >  
             <input class="form-control"
                    type="text"
@@ -149,7 +71,7 @@
       
       <div class="col-4">        
         <div >
-          <label class="form-label">RPA por fecha</label>
+          <label class="form-label">Fecha Digitación</label>
           <div >  
             <input class="form-control"
                    type="datetime-local"
@@ -163,7 +85,7 @@
 
       <div class="col-4">        
         <div class="form-group ">
-          <label class="form-label">RPA por número formulario</label>
+          <label class="form-label">Número Formulario</label>
           <div >  
             <input class="form-control"
                    type="text"
@@ -183,7 +105,7 @@
       
       <div class="col-4">        
         <div >
-          <label class="form-label">RPA por fecha de atención</label>
+          <label class="form-label">Fecha de Atención</label>
           <div >  
             <input class="form-control"
                    type="datetime-local"
@@ -241,9 +163,9 @@
        </thead>
        <tbody>
          <tr *ngFor="let detalle of factura.detalles">           
-           <td>{{ detalle.ate_pre_codigo}}</td>
-           <td>{{ detalle.pre_tip_descripcio}}</td>
-           <td>{{ detalle.pre_pre_descripcio}}</td>
+           <td>{{ detalle.ATE_PRE_CODIGO}}</td>
+           <td>{{ detalle.PRE_TIP_DESCRIPCIO}}</td>
+           <td>{{ detalle.PRE_PRE_DESCRIPCIO}}</td>
            <!-- <td>
              <button class="btn btn-outline-success">
                <fa-icon [icon]="faPenToSquare"></fa-icon>              
@@ -263,37 +185,98 @@
 
      
   
-    <div class="row mt-2">
-     <!--  <div class="col-md-2">
+    <div class="contenedorBotones mt-2">
+
+    <div class="contenedorBoton">
       <div class="input-group">
-        <button type="submit" class="btn btn-outline-primary btnFrm"
-        (click)="actualizar(1,3)"
-        >
-        Factura generada
-        </button>
-      </div>
-    </div> -->
-    <div class="col-md-2">
-      <div class="input-group">
-        <!-- <button type="submit" class="btn btn-outline-secondary btnFrm"
-        (click)="actualizar(2,4)"
-        > -->
-        <button type="submit" class="btn btn-success btnFrm"
-        (click)="actualizar(1,8)"
+        <button type="submit" class="btn btn-success btnFrm2"
+        (click)="actualizar(1,5)"
         >
           Marcar para crear factura
         </button>
       </div>
     </div>
-    <!-- <div class="col-md-2">
-      <div class="input-group">
-        <button type="submit" class="btn btn-outline-secondary btnFrm"
-        (click)="actualizar(3,-1)"
-        >
-          Eliminar - Rechazar
-        </button>
-      </div>
-    </div> -->
+
+    <div class="contenedorBoton">
+      <form [formGroup]="forma"
+      (ngSubmit)="actualizaFactura()"
+      id="factura-form" 
+      class="form" 
+      action="" 
+      method="post">
+        <div class="row">
+          <div class="col-6">        
+            <div class="form-group">
+              <label class="form-label">Número de factura</label>
+              <div [ngClass]="{'validacion': !forma.get('nfactura')?.valid}">  
+                <input type="text" 
+                class="form-control"
+                formControlName="nfactura">
+                <div *ngIf="forma.controls['nfactura'].errors && forma.controls['nfactura'].errors['required'] && forma.controls['nfactura'].dirty"
+                class="form-control-feedback">
+                    El número de factura es necesario
+                </div> 
+              </div>
+            </div>
+          </div> 
+      
+          <div class="col-6">        
+            <div class="input-group contbtnfrm2">
+              <button type="submit" class="btn btn-primary btnFrm2"
+              >
+              Guardar Factura Manual
+            </button>
+          </div>
+          </div> 
+         
+          
+        </div>
+      </form>
+    </div>
+
+    <div class="contenedorBoton">
+      <form [formGroup]="forma2"
+      (ngSubmit)="eliminarFormulario()"
+      id="eliminar-form" 
+      class="form" 
+      action="" 
+      method="post">
+        <div class="row">
+          <div class="col-6">        
+            <div class="form-group">
+              <label class="form-label">Causa de eliminación</label>
+              <div [ngClass]="{'validacion': !forma2.get('causalid')?.valid}">  
+                <select class="form-select" aria-label="Default select example" formControlName="causalid">
+                  <option *ngFor="let causa of causas" [value]="causa.id">{{ causa.nombre }}</option>
+                </select>
+
+                <div *ngIf="forma2.controls['causalid'].errors && forma2.controls['causalid'].errors['required'] && forma2.controls['causalid'].dirty"
+                class="form-control-feedback">
+                    El motivo de eliminación es necesario
+                </div> 
+              </div>
+            </div>
+          </div> 
+      
+          <div class="col-6">        
+            <div class="input-group contbtnfrm2">
+              <button type="submit" class="btn btn-danger btnFrm2"
+              >
+              Eliminar - Rechazar
+            </button>
+          </div>
+          </div> 
+         
+          
+        </div>
+      </form>
+    </div>
+
   </div>
+
+
+
+
+
   </form>
 </div>

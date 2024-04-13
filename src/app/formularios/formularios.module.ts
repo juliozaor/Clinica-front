@@ -17,6 +17,8 @@ import { LogRobotComponent } from './log-robot/log-robot.component';
 import { LogOracleComponent } from './log-oracle/log-oracle.component';
 import { LogEstadoFormularioComponent } from './log-estado-formulario/log-estado-formulario.component';
 import { LogArchivosComponent } from './log-archivos/log-archivos.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ModalDetallesComponent } from './modal-detalles/modal-detalles.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { LogArchivosComponent } from './log-archivos/log-archivos.component';
     LogRobotComponent,
     LogOracleComponent,
     LogEstadoFormularioComponent,
-    LogArchivosComponent
+    LogArchivosComponent,
+    ModalDetallesComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import { LogArchivosComponent } from './log-archivos/log-archivos.component';
     FontAwesomeModule,
     AlertasModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    MatIconModule
   ]
 })
 export class FormulariosModule { }

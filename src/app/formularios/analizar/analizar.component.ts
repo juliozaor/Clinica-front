@@ -157,7 +157,6 @@ export class AnalizarComponent {
     this.frm.causas().subscribe(
       (resp: any) => {
         this.causas = resp
-        console.log(this.causas)
       },
       (err) => {
         console.log(err);

@@ -1,0 +1,37 @@
+<ng-template #modal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title fs-14px  fw-bolder">Detalles del formulario número:  <span>{{ formulario }}</span></h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-info mensajeError" role="alert" *ngIf="sinDetalle">
+            No hay detalles para este formulario
+          </div>
+        <table class="table table-striped" *ngIf="!sinDetalle">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let detalle of detalles">           
+                <td>{{ detalle.ATE_PRE_CODIGO}}</td>
+                <td>{{ detalle.PRE_TIP_DESCRIPCIO}}</td>
+                <td>{{ detalle.PRE_PRE_DESCRIPCIO}}</td>                
+                
+              </tr>
+             
+            </tbody>
+          </table>
+
+
+    </div>
+    <div class="modal-footer d-flex">
+      <div class="d-flex justify-content-end">
+       
+      </div>
+    </div>
+    
+  </ng-template>

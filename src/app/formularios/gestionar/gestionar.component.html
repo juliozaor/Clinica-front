@@ -1,205 +1,201 @@
-<!-- <h1 class="fw-semibold">Escalar para gestión</h1>
+<h1 class="fw-semibold">Analizar Información</h1>
 <hr>
 
 
-<div class="alert alert-info mensajeError" role="alert" *ngIf="mensajeError.estado">
-  {{mensajeError.mensaje}}
-</div>
+  <div class="alert alert-info mensajeError" role="alert" *ngIf="mensajeError.estado">
+    {{mensajeError.mensaje}}
+  </div>
 
 <div class="container" *ngIf="!mensajeError.estado">
-<form>
-  <div class="row mt-3">
-
-    <div class="col-4">        
-      <div class="form-group">
-        <label class="form-label">RUT Paciente</label>
-        <div>  
-          <input class="form-control"
-                 type="text"
-                 name="rut_pac"
-                 [(ngModel)] = "factura.rut_pac"
-                 placeholder="" disabled>
-        </div>
-      </div>
-    </div> 
-    <div class="col-4">        
-      <div>
-        <label class="form-label">Código convenio</label>
-        <div >  
-          <input class="form-control"
-                 type="text"
-                 name="cod_convenio"
-                 [(ngModel)] = "factura.cod_convenio"
-                 placeholder="">
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-4">        
-      <div >
-        <label class="form-label">Convenio</label>
-        <div >  
-          <input class="form-control"
-                 type="text"
-                 name="convenio"
-                 [(ngModel)] = "factura.convenio"
-                 placeholder="">
-        </div>
-      </div>
-    </div> 
+  <form>
     
-  </div>
-
-
-  <div class="row mt-3">
-    
-    <div class="col-4">        
-      <div >
-        <label class="form-label">Ambito</label>
-        <div >  
-          <input class="form-control"
-                 type="text"
-                 name="ambito"
-                 [(ngModel)] = "factura.ambito"
-                 placeholder=""
-                 disabled>
-        </div>
-      </div>
-    </div>   
-    
-    <div class="col-4">        
-      <div >
-        <label class="form-label">RPA por fecha</label>
-        <div >  
-          <input class="form-control"
-                 type="datetime-local"
-                 name="rpa_for_fechadigit"
-                 [(ngModel)] = "factura.rpa_for_fechadigit"
-                 placeholder=""
-                 disabled>
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-4">        
-      <div class="form-group ">
-        <label class="form-label">RPA por número formulario</label>
-        <div >  
-          <input class="form-control"
-                 type="text"
-                 name="rpa_for_numerformu"
-                 [(ngModel)]= "factura.rpa_for_numerformu"
-                 placeholder=""
-                 disabled>
-        </div>
-      </div>
-    </div> 
-
-  </div>
-
-
-  <div class="row mt-3">
-    
-    <div class="col-4">        
-      <div >
-        <label class="form-label">RPA por fecha de atención</label>
-        <div >  
-          <input class="form-control"
-                 type="datetime-local"
-                 name="rpa_for_fechatencion"
-                 [(ngModel)]= "factura.rpa_for_fechatencion"
-                 placeholder="">
-        </div>
-      </div>
-    </div>     
-
-    <div class="col-4">        
-      <div >
-        <label class="form-label">Valor</label>
-        <div >  
-          <input class="form-control"
-                 type="number"
-                 name="valorcta"
-                 [(ngModel)]= "factura.valorcta"
-                 placeholder="">
-        </div>
-      </div>
-    </div>  
-    <div class="col-4">        
-      <div >
-        <label class="form-label">Código centro</label>
-        <div >  
-          <input class="form-control"
-                 type="text"
-                 name="codigocentroaten"
-                 [(ngModel)]= "factura.codigocentroaten"
-                 placeholder="">
-        </div>
-      </div>
-    </div>  
-  </div>
-
-
-
-   <hr>
-   <h2>Detalles</h2>
-
-   <div class="alert alert-info mensajeError" role="alert" *ngIf="sinDetalle">
-    No hay detalles para esta factura
-  </div>
-
-   <table class="table table-striped" *ngIf="!sinDetalle">
-     <thead>
-       <tr>
-        <th scope="col">Código</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Descripción</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr *ngFor="let detalle of factura.detalles">           
-         <td>{{ detalle.ate_pre_codigo}}</td>
-         <td>{{ detalle.pre_tip_descripcio}}</td>
-         <td>{{ detalle.pre_pre_descripcio}}</td>
-      
-       </tr>
-      
-     </tbody>
-   </table>
-
-
-   
- 
-     
     <div class="row mt-3">
-      <div class="col-md-2">
+
+      <div class="col-4">        
+        <div class="form-group">
+          <label class="form-label">Documento Paciente</label>
+          <div>  
+            <input class="form-control"
+                   type="text"
+                   name="rut_pac"
+                   [(ngModel)] = "rutPac"
+                   placeholder="" disabled>
+          </div>
+        </div>
+      </div> 
+      <div class="col-4">        
+        <div>
+          <label class="form-label">Código convenio</label>
+          <div >  
+            <input class="form-control"
+                   type="text"
+                   name="cod_convenio"
+                   [(ngModel)] = "codCovenio"
+                   placeholder="" disabled>
+          </div>
+        </div>
+      </div> 
+
+      <div class="col-4">        
+        <div >
+          <label class="form-label">Nombre Convenio</label>
+          <div >  
+            <input class="form-control"
+                   type="text"
+                   name="convenio"
+                   [(ngModel)] = "convenio"
+                   placeholder="" disabled>
+          </div>
+        </div>
+      </div> 
+      
+    </div>
+
+    
+ 
+     <!-- Tabla -->
+
+     <hr>
+     <h2>Formularios</h2>
+
+     <div class="alert alert-info mensajeError" role="alert" *ngIf="sinDetalle">
+      No se encontrar más formularios asociados
+    </div>
+ 
+     <table class="table table-striped" *ngIf="!sinDetalle">
+       <thead>
+         <tr>
+           <th scope="col">Número Formulario</th>
+           <th scope="col">Ámbito</th>
+           <th scope="col">Fecha Digitación</th>
+           <th scope="col">Fecha de Atención</th>
+           <th scope="col">Valor</th>
+           <th scope="col">Procesar</th>
+           <th scope="col">Pausar</th>
+           <th scope="col">Detalles</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let factura of facturas">    
+            <td>{{ factura.RPA_FOR_NUMERFORMU }}</td>
+            <td>{{ factura.AMBITO }}</td>
+            <td>{{ factura.RPA_FOR_FECHADIGIT }}</td>
+            <td>{{ factura.RPA_FOR_FECHATENCION }}</td>
+            <td>{{ factura.VALORCTA }}</td>            
+              <td>
+                <input type="checkbox" [(ngModel)]="factura.procesar" name="procesar_{{ factura.RPA_FOR_NUMERFORMU }}" (change)="uncheckOther('procesar', factura.RPA_FOR_NUMERFORMU!)">
+              </td>
+              <td>
+                <input type="checkbox" [(ngModel)]="factura.pausar" name="pausar_{{ factura.RPA_FOR_NUMERFORMU }}" (change)="uncheckOther('pausar', factura.RPA_FOR_NUMERFORMU!)">
+              </td>
+            <td width="10px">
+              <span class="cursor-pointer">
+                <span class="cursor-pointer" (click)="modalDetalle(factura.detalles!)" ><mat-icon class="iconEdit">edit</mat-icon> </span>
+              </span>
+            </td>       
+         </tr>        
+       </tbody>
+     </table>
+
+
+     
+  
+    <div class="contenedorBotones mt-2">
+
+    <div class="contenedorBoton">
       <div class="input-group">
-        <button type="submit" class="btn btn-outline-primary btnFrm"
-        (click)="actualizar(4,5)"
+        <button type="submit" class="btn btn-success btnFrm2"
+        (click)="marcarParaCrear()"
         >
-          Crear Factura
+          Marcar para crear factura
         </button>
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <button type="submit" class="btn btn-outline-secondary btnFrm"
-        (click)="actualizar(5,2)"
-        >
-          Devolver a Analizar
-        </button>
-      </div>
+
+    <div class="contenedorBoton">
+      <form [formGroup]="forma"
+      (ngSubmit)="actualizaFactura()"
+      id="factura-form" 
+      class="form" 
+      action="" 
+      method="post">
+        <div class="row">
+          <div class="col-6">        
+            <div class="form-group">
+              <label class="form-label">Número de factura</label>
+              <div [ngClass]="{'validacion': !forma.get('nfactura')?.valid}">  
+                <input type="text" 
+                class="form-control"
+                formControlName="nfactura">
+                <div *ngIf="forma.controls['nfactura'].errors && forma.controls['nfactura'].errors['required'] && forma.controls['nfactura'].dirty"
+                class="form-control-feedback">
+                    El número de factura es necesario
+                </div> 
+              </div>
+            </div>
+          </div> 
+      
+          <div class="col-6">        
+            <div class="input-group contbtnfrm2">
+              <button type="submit" class="btn btn-primary btnFrm2"
+              >
+              Guardar Factura Manual
+            </button>
+          </div>
+          </div> 
+         
+          
+        </div>
+      </form>
     </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <button type="submit" class="btn btn-outline-secondary btnFrm"
-        (click)="actualizar(6,-1)"
-        >
-          Eliminar - Rechazar
-        </button>
-      </div>
+
+    <div class="contenedorBoton">
+      <form [formGroup]="forma2"
+      (ngSubmit)="eliminarFormulario()"
+      id="eliminar-form" 
+      class="form" 
+      action="" 
+      method="post">
+        <div class="row">
+          <div class="col-6">        
+            <div class="form-group">
+              <label class="form-label">Causa de eliminación</label>
+              <div [ngClass]="{'validacion': !forma2.get('causalid')?.valid}">  
+                <select class="form-select" aria-label="Default select example" formControlName="causalid">
+                  <option *ngFor="let causa of causas" [value]="causa.id">{{ causa.nombre }}</option>
+                </select>
+
+                <div *ngIf="forma2.controls['causalid'].errors && forma2.controls['causalid'].errors['required'] && forma2.controls['causalid'].dirty"
+                class="form-control-feedback">
+                    El motivo de eliminación es necesario
+                </div> 
+              </div>
+            </div>
+          </div> 
+      
+          <div class="col-6">        
+            <div class="input-group contbtnfrm2">
+              <button type="submit" class="btn btn-danger btnFrm2"
+              >
+              Eliminar - Rechazar
+            </button>
+          </div>
+          </div> 
+         
+          
+        </div>
+      </form>
     </div>
+
   </div>
+
+
+
+
+
   </form>
+
+
 </div>
- -->
+
+<app-modal-detalles #modalDetalles ></app-modal-detalles>

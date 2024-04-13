@@ -14,6 +14,8 @@ export class FacturaModel {
   nfactura?:string;
   causalid?:string;
   detalles?: DetalleModel[];
-
+  RPA_FOR_NUMERFORMU_PID?:string
+  procesar:boolean =false;
+  pausar:boolean = false;
 
 } 
