@@ -47,9 +47,12 @@ export class FacturasComponent {
     });
   };
 
-  abrirRegistros(factura: string) {
+  abrirRegistros(factura: string, rut:string,cod_convenio:number,descripcion_convenio:string) {
+    const formulario = {
+      factura, rut, cod_convenio, descripcion_convenio
+    }
     if (factura != '') {
-      this.route.navigate(['/dashboard/archivos/registros', factura]);
+      this.route.navigate(['/dashboard/archivos/registros', JSON.stringify(formulario)]);
     }
   }
 

@@ -19,6 +19,9 @@ import { LogEstadoFormularioComponent } from './log-estado-formulario/log-estado
 import { LogArchivosComponent } from './log-archivos/log-archivos.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalDetallesComponent } from './modal-detalles/modal-detalles.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { BusquedaIndividualComponent } from './busqueda-individual/busqueda-individual.component';
+import { BusquedaAgrupadoComponent } from './busqueda-agrupado/busqueda-agrupado.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { ModalDetallesComponent } from './modal-detalles/modal-detalles.componen
     LogOracleComponent,
     LogEstadoFormularioComponent,
     LogArchivosComponent,
-    ModalDetallesComponent
+    ModalDetallesComponent,
+    BusquedaComponent,
+    BusquedaIndividualComponent,
+    BusquedaAgrupadoComponent
   ],
   imports: [
     CommonModule,

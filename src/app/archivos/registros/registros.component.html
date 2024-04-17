@@ -1,7 +1,62 @@
 <h1 class="fw-semibold">Registros</h1>
 <hr>
 
-<div class="filtros d-flex mb-3 flex-gap-20">
+<div class="row mt-3">
+
+  <div class="col-3">        
+    <div class="form-group">
+      <label class="form-label">Factura</label>
+      <div>  
+        <input class="form-control"
+               type="text"
+               name="factura"
+               [(ngModel)] = "factura"
+               placeholder="" disabled>
+      </div>
+    </div>
+  </div> 
+
+  <div class="col-3">        
+    <div class="form-group">
+      <label class="form-label">Rut</label>
+      <div>  
+        <input class="form-control"
+               type="text"
+               name="rut_pac"
+               [(ngModel)] = "rut"
+               placeholder="" disabled>
+      </div>
+    </div>
+  </div> 
+  <div class="col-3">        
+    <div>
+      <label class="form-label">Código convenio</label>
+      <div >  
+        <input class="form-control"
+               type="text"
+               name="cod_convenio"
+               [(ngModel)] = "convenio"
+               placeholder="" disabled>
+      </div>
+    </div>
+  </div> 
+
+  <div class="col-3">        
+    <div >
+      <label class="form-label">Nombre Convenio</label>
+      <div >  
+        <input class="form-control"
+               type="text"
+               name="convenio"
+               [(ngModel)] = "desc_convenio"
+               placeholder="" disabled>
+      </div>
+    </div>
+  </div> 
+  
+</div>
+
+<div class="filtros d-flex mb-1 mt-3 flex-gap-20">
  
   <fieldset class="me-2">
       <label class="fs-14px fw-semibold">Filtrar</label>
@@ -45,10 +100,10 @@
             <td class="celda-centrada">{{ registro.hora_inicio }} </td>
             <td class="celda-centrada">{{ registro.hora_fin }} </td>  
             <td class="celda-centrada" *ngIf="registro.nombre_pdf">
-              <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 1)"><mat-icon>file_open</mat-icon> </span>
-              <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 2)"><mat-icon>file_download</mat-icon> </span>
-              <span class="cursor-pointer" (click)="actualizarArchivo(registro.nombre_pdf, registro.factura)"><mat-icon>drive_file_move</mat-icon> </span>
-              <span *ngIf="estadoRol" class="cursor-pointer" (click)="eliminarArchivo(registro.nombre_pdf, registro.factura, registro.id)"><mat-icon>delete</mat-icon> </span>
+              <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 1)" title="Visualizar archivo"><mat-icon>file_open</mat-icon> </span>
+              <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 2)" title="Descargar archivo"><mat-icon>file_download</mat-icon> </span>
+              <span class="cursor-pointer" (click)="actualizarArchivo(registro.nombre_pdf, registro.factura)" title="Actualizar archivo"><mat-icon>drive_file_move</mat-icon> </span>
+              <span *ngIf="estadoRol" class="cursor-pointer" (click)="eliminarArchivo(registro.nombre_pdf, registro.factura, registro.id)" title="Eliminar archivo"><mat-icon>delete</mat-icon> </span>
             </td>
            
            

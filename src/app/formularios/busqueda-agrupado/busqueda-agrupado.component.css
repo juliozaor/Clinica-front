@@ -1,0 +1,16 @@
+.contenedorBoton{
+    margin: 5px 10px;
+}
+
+.contenedorBotones{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+  @media screen and (max-width: 1050px) {
+    .contenedorBotones {
+        flex-direction: column;
+    }
+  }

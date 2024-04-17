@@ -28,6 +28,9 @@ export class RegistrosComponent {
   paginadorReportes: Paginador<FiltrosLogs>;
   registroRpa: RegistroRPA[] = [];
   factura:string = ''
+  rut: string = ''
+  convenio: string = ''
+  desc_convenio = ''
   termino:string = ''
   archivoBase64: string = ''
   rol:string=''
@@ -35,10 +38,12 @@ export class RegistrosComponent {
 
 constructor(private servicioArchivos: ArchivosService, private routeActive: ActivatedRoute, private sanitizer: DomSanitizer){
   this.routeActive.params.subscribe(params => {
-    this.factura = params['factura']; // Nombre del parámetro definido en la ruta
-    //this.consultarFactura();
-    console.log(this.factura);
-    
+    const ArrayParams = JSON.parse(params['formulario'])
+    this.factura = ArrayParams.factura;
+    this.rut = ArrayParams.rut;
+    this.convenio = ArrayParams.cod_convenio;
+    this.desc_convenio = ArrayParams.descripcion_convenio;
+
   });
   this.paginadorReportes = new Paginador<FiltrosLogs>(this.obtenerRegistros);
 }
@@ -73,7 +78,7 @@ obtenerArchivo(nombre:string, factura:string, tipo:number){
   this.servicioArchivos
   .abrirArchivo(nombre, factura)
   .subscribe({
-    next: (respuesta: any) => {
+    next: (respuesta: any) => {      
       if(respuesta.archivo){
         if (tipo == 1) {
           this.modalVerArchivo.abrir(respuesta.archivo)           
@@ -82,6 +87,8 @@ obtenerArchivo(nombre:string, factura:string, tipo:number){
           this.archivoBase64 = `${respuesta.archivo}`
           this.descargarArchivo(nombre)
         }
+      }else{
+        this.popup.abrirPopupFallido(respuesta.mensaje)
       }
     },
   });

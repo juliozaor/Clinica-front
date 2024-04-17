@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { FacturaModel } from '../models/factura.model';
+import { FiltrosLogs } from '../compartido/modelos/FiltrosLogs';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,18 @@ export class FormsService {
     return this.http.get(`${this.urlBackend}${endpoint}`,{headers: this.headers})
   }
 
+  buscar(pagina: number, limite: number, filtros?:FiltrosLogs) {
+    let endpoint = `facturas/buscar?pagina=${pagina}&limite=${limite}`;
+    if(filtros){
+      if(filtros.termino) endpoint+=`&termino=${filtros.termino}`;
+    }
+    return this.http.get(`${this.urlBackend}${endpoint}`,{headers: this.headers})
+  }
+
+  obtenerBusqueda(formularioId: string, rut: string,) {
+    let endpoint = `facturas/obtener?formularioId=${formularioId}&rut=${rut}`;
+    return this.http.get(`${this.urlBackend}${endpoint}`,{headers: this.headers})
+  }
+  
 
 }

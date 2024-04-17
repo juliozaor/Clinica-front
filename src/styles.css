@@ -302,3 +302,16 @@ al2-html-container {
   color: #000000;
   padding: 10px;
 }
+
+span[title]::after {
+  content: attr(title);
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}

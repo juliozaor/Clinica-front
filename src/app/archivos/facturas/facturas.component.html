@@ -40,7 +40,7 @@
     <tbody class="fs-12px">
         <tr *ngFor="let factura of facturaRPA ; let i = index">            
           <td class="celda-centrada">
-            <span class="cursor-pointer" (click)="abrirRegistros(factura.factura)"><mat-icon>folder_open</mat-icon> </span>
+            <span class="cursor-pointer" (click)="abrirRegistros(factura.factura,factura.rut,factura.cod_convenio,factura.descripcion_convenio )"><mat-icon>folder_open</mat-icon> </span>
         </td>
             <td class="celda-centrada">{{ factura.cod_convenio}} </td>
             <td class="celda-centrada">{{ factura.rut }} </td>

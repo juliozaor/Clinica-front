@@ -88,7 +88,14 @@ export class GestionarComponent {
   }
 
   
-  marcarParaCrear(){
+ async marcarParaCrear(){
+  Swal.fire({
+    icon:'info',
+    allowOutsideClick: false,      
+    text: 'Espere por favor...',
+  });
+  Swal.showLoading();
+  
     this.validarYSepararFacturas()
     if(this.facturasProcesadas.length > 0){
       const padre = this.facturasProcesadas[0].RPA_FOR_NUMERFORMU;
@@ -96,34 +103,100 @@ export class GestionarComponent {
         f.RPA_FOR_NUMERFORMU_PID = padre;
 
       })
-      this.actualizar(1,5, this.facturasProcesadas);
+     await this.actualizar(1,5, this.facturasProcesadas);
     }
     if(this.facturasPausadas.length >0){
-      this.actualizar(1,10, this.facturasPausadas);
+     await this.actualizar(1,10, this.facturasPausadas);
     }
+    Swal.close();  
+    await Swal.fire({
+      text: "El formulario se actualizó correctamente, ¿desea cargar un nuevo formulario?",
+      icon: "info",
+      showCancelButton: true,
+      allowOutsideClick: false,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Cargar formulario",
+      cancelButtonText:"Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        this.limpiar()
+        this.consultarFactura();
+      }
+      if (result.isDismissed) {
+        this.route.navigate(['/dashboard/home']); 
+      }
+      
+    });
 
     
   }
   
 
   
-  actualizaFactura(){
+  async actualizaFactura(){
+    if (this.forma.invalid) {
+      this.marcarFormularioComoSucio(1)
+      return;
+    }    
+
+    Swal.fire({
+      icon:'info',
+      allowOutsideClick: false,      
+      text: 'Espere por favor...',
+    });
+    Swal.showLoading();
     this.validarYSepararFacturas()
     if(this.facturasProcesadas.length > 0){
       const nFactura = this.forma.controls['nfactura'].value.toString();
       this.facturasProcesadas.map(f=>{
         f.nfactura = nFactura;
       })
-      this.actualizar(1,9, this.facturasProcesadas);
+     this.actualizar(1,9, this.facturasProcesadas);
     }
     if(this.facturasPausadas.length >0){
       this.actualizar(1,10, this.facturasPausadas);
     }
     
+    Swal.close();  
+    await Swal.fire({
+      text: "El formulario se actualizó correctamente, ¿desea cargar un nuevo formulario?",
+      icon: "info",
+      showCancelButton: true,
+      allowOutsideClick: false,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Cargar formulario",
+      cancelButtonText:"Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        this.limpiar()
+        this.consultarFactura();
+      }
+      if (result.isDismissed) {
+        this.route.navigate(['/dashboard/home']); 
+      }
+      
+    });
+    
   }
   
   
-  eliminarFormulario(){
+ async eliminarFormulario(){
+    if (this.forma2.invalid) {
+      this.marcarFormularioComoSucio(2)
+      return;
+    }
+
+    Swal.fire({
+      icon:'info',
+      allowOutsideClick: false,      
+      text: 'Espere por favor...',
+    });
+    Swal.showLoading();
+
    this.validarYSepararFacturas()
     if(this.facturasProcesadas.length > 0){
       const causalId = this.forma2.controls['causalid'].value;
@@ -135,6 +208,28 @@ export class GestionarComponent {
     if(this.facturasPausadas.length >0){
       this.actualizar(1,10, this.facturasPausadas);
     }
+
+    Swal.close();  
+    await Swal.fire({
+      text: "El formulario se actualizó correctamente, ¿desea cargar un nuevo formulario?",
+      icon: "info",
+      showCancelButton: true,
+      allowOutsideClick: false,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Cargar formulario",
+      cancelButtonText:"Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        this.limpiar()
+        this.consultarFactura();
+      }
+      if (result.isDismissed) {
+        this.route.navigate(['/dashboard/home']); 
+      }
+      
+    });   
     
   
   }
@@ -144,37 +239,10 @@ export class GestionarComponent {
     this.forma2.reset()
   }
 
-  actualizar(boton: number, estado: number, facturasArray:any[]) {
-      Swal.fire({
-      icon:'info',
-      allowOutsideClick: false,      
-      text: 'Espere por favor...',
-    });
-    Swal.showLoading();
-    
+ async actualizar(boton: number, estado: number, facturasArray:any[]) {     
     this.frm.actualizarAgrupadas(estado, boton, facturasArray).subscribe(
-      (resp: any) => {
-        Swal.close();
-        Swal.fire({
-          text: "El formulario se actualizó correctamente, ¿desea cargar un nuevo formulario?",
-          icon: "info",
-          showCancelButton: true,
-          allowOutsideClick: false,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Cargar formulario",
-          cancelButtonText:"Cancelar"
-        }).then((result) => {
-          if (result.isConfirmed) {
-           // this.consultarFactura();
-           this.route.navigate(['/dashboard/formulario/gestionar']); 
-          }
-          if (result.isDismissed) {
-            this.route.navigate(['/dashboard/home']); 
-          }
-          
-        }); 
-        this.limpiar()
+      (resp: any) => {           
+        console.log("Entro 11");    
       },
       (err) => {
         console.log({ err });
@@ -231,12 +299,6 @@ export class GestionarComponent {
       }
     }
   
-    // Verificar si falta alguna fila por marcar
-   /*  const faltanPorMarcar = this.facturas.some(factura => !factura.procesar && !factura.pausar);
-    if (faltanPorMarcar) {
-      alert('Falta marcar una o más filas');
-    }
- */
     
   }
 

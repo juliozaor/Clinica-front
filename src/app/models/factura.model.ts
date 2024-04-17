@@ -14,8 +14,14 @@ export class FacturaModel {
   nfactura?:string;
   causalid?:string;
   detalles?: DetalleModel[];
-  RPA_FOR_NUMERFORMU_PID?:string
+  RPA_FOR_NUMERFORMU_PID?:string;
   procesar:boolean =false;
   pausar:boolean = false;
+  RPA_FOR_TIPOFORMU?:string;
+  TIPO?:string;
+  NOM_PAC?:string;
+  EMPRESA?:string;
+  RPA_FOR_ETDCTA?:string;
+  RPA_FOR_VIGENCIA?:string;
 
 } 

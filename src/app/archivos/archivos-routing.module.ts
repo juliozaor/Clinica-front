@@ -6,7 +6,7 @@ import { RegistrosComponent } from './registros/registros.component';
 
 const routes: Routes = [
   { path: 'facturas', component: FacturasComponent },
-  { path: 'registros/:factura', component: RegistrosComponent}
+  { path: 'registros/:formulario', component: RegistrosComponent}
 ];
 
 @NgModule({
