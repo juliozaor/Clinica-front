@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Paginador } from '../../compartido/modelos/Paginador';
 import { FiltrosLogs } from '../../compartido/modelos/FiltrosLogs';
 import { FacturaModel } from '../../models/factura.model';
@@ -8,6 +8,7 @@ import { Paginacion } from '../../compartido/modelos/Paginacion';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 
 @Component({
   selector: 'app-busqueda',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './busqueda.component.css'
 })
 export class BusquedaComponent {
-
+  @ViewChild('popup') popup!: PopupComponent
   private readonly paginaInicial = 1;
   private readonly limiteInicial = 5
   paginadorReportes: Paginador<FiltrosLogs>
@@ -57,6 +58,8 @@ export class BusquedaComponent {
           const tipo = respuesta.tipo;
           const estado = respuesta.estado;                   
           const formularios = respuesta.formularios
+          console.log(respuesta);
+          
          if(estado == 1){
           if(tipo === 'INDIVIDUAL'){
             console.log("Abrir individual");
@@ -68,7 +71,10 @@ export class BusquedaComponent {
           }
           console.log(formularios);
 
-         }else{
+         }else if(estado == 3){
+          this.popup.abrirPopupFallido(`el formulario ya se encuentra asignado a: ${ formularios[0].uanalizarinfo}`, "Realizar otra búsqueda.")
+
+         }else if(estado == 2){
           console.log("Formulario no encontrado");
 
           //poppup
