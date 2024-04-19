@@ -37,7 +37,7 @@
 
 
     <!-- ================ -->
-    <ng-container *ngIf="mAdministrador">
+    <ng-container *ngIf="ifAdmin">
       <button  mat-button class="menu-button" (click)="toggleBotones(1)">
         <mat-icon>admin_panel_settings</mat-icon>
         <span>Administración</span>
@@ -56,7 +56,7 @@
 
     <mat-divider></mat-divider>
 
-    <ng-container *ngIf="mFormularios">
+    <ng-container *ngIf="ifForm">
       <button  mat-button class="menu-button" (click)="toggleBotones(2)">
         <mat-icon>document_scanner</mat-icon>
         <span>Analizar Formularios</span>

@@ -19,6 +19,8 @@ export class PagesComponent {
   mAdministrador: ModuloModel[] = [];
   mFormularios: ModuloModel[] = [];
   mPdf?: ModuloModel;
+  ifAdmin = true
+  ifForm = true
 
   mostrarA: boolean = false;
   mostrarF: boolean = false;
@@ -33,6 +35,12 @@ export class PagesComponent {
   ) {
     this.modulos = this.auth.obtenerModulos();
     this.distribuirModulos()
+    if(this.mAdministrador.length <= 0){
+      this.ifForm = false
+    }
+    if(this.mFormularios.length <= 0){
+      this.ifAdmin = false
+    }
     
   }
 
