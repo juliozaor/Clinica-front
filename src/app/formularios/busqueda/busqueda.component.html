@@ -7,6 +7,21 @@
         [ngModel]="termino" 
         (ngModelChange)="setTermino($event)" />
     </fieldset>
+    <fieldset class="me-2">
+        <label class="fs-14px fw-semibold">Estado</label>
+        <select [(ngModel)]="estado" class="form-select">
+            <option value="" selected>Selecciona un estado</option>
+            <option value="7">Pendiente Gestión - Devuleta por BOT</option>
+            <!-- <option value="1">Pendiente Procesamiento</option> -->
+            <option value="2">Analizar Información</option>
+            <!-- <option value="3">Escalar a Gestión</option> -->
+            <!-- <option value="4">Marcar Prestación para Facturar</option> -->
+            <!-- <option value="5">Crear Factura</option> -->
+            <!-- <option value="8">Factura Generada por BOT</option>
+            <option value="9">Factura creada por gestor</option> -->
+            <option value="10">Pausado</option>
+        </select>
+    </fieldset>
     <fieldset class="d-flex align-items-end me-2">
         <button class="boton primario relleno" (click)="actualizarFiltros()">Buscar</button>
     </fieldset>
@@ -25,6 +40,7 @@
               <th class="encabezado-tabla celda-centrada" width="100px">Fecha Digitación</th>
               <th class="encabezado-tabla celda-centrada" width="100px">Fecha de Atención</th>
               <th class="encabezado-tabla celda-centrada" width="100px">Valor</th>
+              <th class="encabezado-tabla celda-centrada" width="100px">Estado</th>
               <th class="encabezado-tabla celda-centrada" width="10px">Analizar</th>
 
              
@@ -39,6 +55,7 @@
               <td class="celda-centrada">{{ formulario.RPA_FOR_FECHADIGIT }}</td>
               <td class="celda-centrada">{{ formulario.RPA_FOR_FECHATENCION }}</td>
               <td class="celda-centrada">{{ formulario.VALORCTA }}</td>
+              <td class="celda-centrada">{{ formulario.estado?.nombre }}</td>
               <td>
                 <span class="cursor-pointer celda-centrada" (click)="analizarFormulario(formulario.RPA_FOR_NUMERFORMU!, formulario.RUT_PAC!)" title="Analizar formulario"><mat-icon>edit_note</mat-icon></span>
             </td>

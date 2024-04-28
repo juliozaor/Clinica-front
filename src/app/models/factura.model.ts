@@ -1,4 +1,5 @@
 import { DetalleModel } from "./detalle.model";
+import { EstadoModel } from "./estado.model";
 
 export class FacturaModel {
   RUT_PAC?:string;
@@ -23,5 +24,6 @@ export class FacturaModel {
   EMPRESA?:string;
   RPA_FOR_ETDCTA?:string;
   RPA_FOR_VIGENCIA?:string;
-
+  estado?:EstadoModel;
+  nombreEstado?:string;
 } 

@@ -9,6 +9,7 @@ import { Paginacion } from '../../compartido/modelos/Paginacion';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
+import { FiltrosFormulario } from '../../compartido/modelos/FiltrosFormulario';
 
 @Component({
   selector: 'app-busqueda',
@@ -19,25 +20,25 @@ export class BusquedaComponent {
   @ViewChild('popup') popup!: PopupComponent
   private readonly paginaInicial = 1;
   private readonly limiteInicial = 5
-  paginadorReportes: Paginador<FiltrosLogs>
+  paginadorReportes: Paginador<FiltrosFormulario>
   formularios: FacturaModel[] = []
-
+  estado: string = ""
   termino: string = ""
 
   constructor(
     private servicioFormulario: FormsService, private route: Router
   ){ 
    
-    this.paginadorReportes = new Paginador<FiltrosLogs>(this.obtenerFormularios)    
+    this.paginadorReportes = new Paginador<FiltrosFormulario>(this.obtenerFormularios)    
   }
 
   ngOnInit(): void {
     this.paginadorReportes.inicializar(this.paginaInicial, this.limiteInicial, {})
   }
-  obtenerFormularios = (pagina: number, limite: number, filtros?:FiltrosLogs)=>{
+  obtenerFormularios = (pagina: number, limite: number, filtros?:FiltrosFormulario)=>{
     return new Observable<Paginacion>( sub => {
       this.servicioFormulario.buscar(pagina, limite, filtros ).subscribe({
-        next: ( respuesta:any )=>{                    
+        next: ( respuesta:any )=>{             
           this.formularios = respuesta.formularios
           sub.next(respuesta.paginacion)
         }
@@ -85,11 +86,12 @@ export class BusquedaComponent {
   }
 
   actualizarFiltros(){
-    this.paginadorReportes.filtrar({ termino: this.termino })
+    this.paginadorReportes.filtrar({ termino: this.termino, estadoId: this.estado })
   }
 
   limpiarFiltros(){
     this.termino = ""
+    this.estado = ""
     this.paginadorReportes.filtrar({ termino: this.termino })
   }
 

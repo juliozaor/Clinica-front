@@ -34,6 +34,7 @@ export class BusquedaAgrupadoComponent {
   rutPac:string = ''
   codCovenio:string = ''
   convenio:string = ''
+  nombreEstado:string=''
 
   facturasProcesadas: any[] = [];
   facturasPausadas: any[] = [];
@@ -55,6 +56,7 @@ export class BusquedaAgrupadoComponent {
       this.codCovenio = this.facturas[0].COD_CONVENIO!
         this.convenio = this.facturas[0].CONVENIO!
         this.rutPac = this.facturas[0].RUT_PAC!
+        this.nombreEstado = this.facturas[0].nombreEstado!
     });
 
   }
