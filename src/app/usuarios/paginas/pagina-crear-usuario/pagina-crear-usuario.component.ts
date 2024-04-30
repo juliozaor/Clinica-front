@@ -32,7 +32,7 @@ export class PaginaCrearUsuarioComponent {
       nombre: new FormControl(undefined, [ Validators.required ]),
       apellido: new FormControl(undefined),
       identificacion: new FormControl(undefined, [ Validators.required ]),
-      fechaNacimiento: new FormControl(undefined, [ Validators.required ]),
+      fechaNacimiento: new FormControl(undefined),
       correo: new FormControl(undefined, [ Validators.required, Validators.email ]),
       telefono: new FormControl(undefined),
       rol: new FormControl("", [ Validators.required ]),
@@ -82,8 +82,8 @@ export class PaginaCrearUsuarioComponent {
         this.paginador.refrescar()
         this.limpiarFormulario()
       },
-      error: ()=>{
-        this.popup.abrirPopupFallido("Error al crear el usuario", "Intentalo más tarde.")
+      error: (err)=>{        
+        this.popup.abrirPopupFallido(err.error.message)
       }
     })
   }
