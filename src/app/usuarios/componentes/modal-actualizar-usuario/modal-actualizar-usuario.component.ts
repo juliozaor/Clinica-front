@@ -28,8 +28,8 @@ export class ModalActualizarUsuarioComponent {
       nombre: new FormControl(undefined, [ Validators.required ]),
       apellido: new FormControl(undefined),
       identificacion: new FormControl(undefined, [ Validators.required ]),
-      fechaNacimiento: new FormControl(undefined, [ Validators.required ]),
-      correo: new FormControl(undefined, [ Validators.required ]),
+      fechaNacimiento: new FormControl(undefined),
+      correo: new FormControl(""),
       telefono: new FormControl(undefined),
       rol: new FormControl("", [ Validators.required ]),
       usuario: new FormControl("", [ Validators.required ]),
@@ -62,7 +62,6 @@ export class ModalActualizarUsuarioComponent {
       apellido: controls['apellido'].value,
       nombre: controls['nombre'].value,
       correo: controls['correo'].value,
-      fechaNacimiento: controls['fechaNacimiento'].value,
      /*  identificacion: controls['identificacion'].value, */
       idRol: controls['rol'].value,
       telefono: controls['telefono'].value,
@@ -72,8 +71,8 @@ export class ModalActualizarUsuarioComponent {
         this.usuarioActualizado.emit();
         this.cerrar()
       },
-      error: ()=>{
-        this.popup.abrirPopupFallido("Error al actualizar el usuario", "Intentalo más tarde.")
+      error: (err)=>{
+        this.popup.abrirPopupFallido(err.error.message)
       }
     })
   }

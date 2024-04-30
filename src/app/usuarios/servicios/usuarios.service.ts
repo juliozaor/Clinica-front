@@ -26,8 +26,10 @@ export class UsuariosService extends Autenticable {
     return this.http.post(`${this.host}${endpoint}`, peticion, { headers: this.obtenerCabeceraAutorizacion() } )
   }
 
-  actualizar(documento: string, peticion: PeticionActualizarUsuario){
+  actualizar(documento: string, peticion: any){
     const endpoint = `usuarios/${documento}`
+    console.log(peticion);
+    
     return this.http.patch(`${this.host}${endpoint}`, peticion, { headers: this.obtenerCabeceraAutorizacion() } )
   }
 

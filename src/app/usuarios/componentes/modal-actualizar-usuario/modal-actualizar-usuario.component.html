@@ -7,7 +7,7 @@
     <form [formGroup]="formulario">
       <div class="row mb-3">
         <label class="fw-semibold fs-16px mb-2">Datos del usuario</label>
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <fieldset>
             <label>Nombre <span class="validacion">*</span></label>
             <input formControlName="nombre" type="text" class="form-control" placeholder="Ingresa el nombre">
@@ -15,13 +15,13 @@
               [control]="this.formulario.controls['nombre']" />
           </fieldset>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <fieldset>
             <label>Apellido</label>
             <input formControlName="apellido" type="text" class="form-control" placeholder="Ingresa el apellido">
           </fieldset>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <fieldset>
             <label>Identificación <span class="validacion">*</span></label>
             <input formControlName="identificacion" type="text" class="form-control"
@@ -30,25 +30,21 @@
               [control]="this.formulario.controls['identificacion']" />
           </fieldset>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <!-- <div class="col-sm-12 col-md-6 col-lg-3">
           <fieldset>
-            <label>Fecha de nacimiento <span class="validacion">*</span></label>
+            <label>Fecha de nacimiento</label>
             <input formControlName="fechaNacimiento" type="date" class="form-control"
-              placeholder="Ingresa la fecha de nacimiento">
-            <app-validacion [validacion]="'required'" [texto]="'La fecha de nacimiento es requerida.'"
-              [control]="this.formulario.controls['fechaNacimiento']" />
+              placeholder="Ingresa la fecha de nacimiento">           
           </fieldset>
-        </div>
+        </div> -->
       </div>
       <div class="row mb-3">
         <label class="fw-semibold fs-16px mb-2">Información de contacto</label>
         <div class="col-sm-12 col-md-6">
           <fieldset>
-            <label>Correo <span class="validacion">*</span></label>
-            <input formControlName="correo" type="text" class="form-control" placeholder="Ingresa el correo">
-            <app-validacion [validacion]="'required'" [texto]="'El correo es requerido.'"
-              [control]="this.formulario.controls['correo']" />
-          </fieldset>
+            <label>Correo</label>
+            <input formControlName="correo" type="email" class="form-control" placeholder="Ingresa el correo">            
+        </fieldset>
         </div>
         <div class="col-sm-12 col-md-6">
           <fieldset>

@@ -33,7 +33,7 @@ export class PaginaCrearUsuarioComponent {
       apellido: new FormControl(undefined),
       identificacion: new FormControl(undefined, [ Validators.required ]),
       fechaNacimiento: new FormControl(undefined),
-      correo: new FormControl(undefined, [ Validators.required, Validators.email ]),
+      correo: new FormControl(""/* , [ Validators.required, Validators.email ] */),
       telefono: new FormControl(undefined),
       rol: new FormControl("", [ Validators.required ]),
       usuario: new FormControl("", [ Validators.required ]),
@@ -67,6 +67,9 @@ export class PaginaCrearUsuarioComponent {
       return;
     }
     const controls = this.formulario.controls
+
+    
+    
     this.servicio.guardar({
       apellido: controls['apellido'].value,
       nombre: controls['nombre'].value,
