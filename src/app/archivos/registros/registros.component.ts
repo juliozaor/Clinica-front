@@ -55,7 +55,7 @@ ngOnInit() {
     {}
   );
 this.rol = localStorage.getItem('rol')??'';
-if(this.rol == '008'){
+if(this.rol == '008' || this.rol == '012' || this.rol == '013' || this.rol == '014' || this.rol == '015' || this.rol == '016'){
   this.estadoRol = true
 }
 
