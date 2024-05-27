@@ -36,10 +36,12 @@ export class PagesComponent {
     this.modulos = this.auth.obtenerModulos();
     this.distribuirModulos()
     if(this.mAdministrador.length <= 0){
-      this.ifForm = false
+      //this.ifForm = false
+      this.ifAdmin = false
     }
     if(this.mFormularios.length <= 0){
-      this.ifAdmin = false
+      this.ifForm = false
+      //this.ifAdmin = false
     }
     
   }
