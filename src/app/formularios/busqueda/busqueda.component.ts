@@ -8,8 +8,8 @@ import { Paginacion } from '../../compartido/modelos/Paginacion';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 import { FiltrosFormulario } from '../../compartido/modelos/FiltrosFormulario';
+import { PopupComponent } from '../../alertas/componentes/popup/popup.component';
 
 @Component({
   selector: 'app-busqueda',
@@ -58,7 +58,7 @@ export class BusquedaComponent {
           Swal.close();
           const tipo = respuesta.tipo;
           const estado = respuesta.estado;                   
-          const formularios = respuesta.formularios
+          const formularios = respuesta.formularios 
           console.log(respuesta);
           
          if(estado == 1){
@@ -79,6 +79,10 @@ export class BusquedaComponent {
           console.log("Formulario no encontrado");
 
           //poppup
+         }else{
+          console.log("Formulario no encontrado 2");
+
+          this.popup.abrirPopupFallido(`No fue posible evaluar si el formulario es individual o agrupado`, "Realizar otra búsqueda.")
          }
          
         }

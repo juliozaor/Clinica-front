@@ -54,11 +54,25 @@ export class BusquedaAgrupadoComponent {
     this.routeActive.params.subscribe(params => {
       this.facturas = JSON.parse(params['formulario']);
       this.codCovenio = this.facturas[0].COD_CONVENIO!
-        this.convenio = this.facturas[0].CONVENIO!
-        this.rutPac = this.facturas[0].RUT_PAC!
-        this.nombreEstado = this.facturas[0].nombreEstado!
+      this.convenio = this.facturas[0].CONVENIO!
+      this.rutPac = this.facturas[0].RUT_PAC!
+      this.nombreEstado = this.facturas[0].nombreEstado!
     });
+    this.marcarEstados();
 
+  }
+
+  marcarEstados(){
+    this.facturas.forEach((factura) => {
+      console.log("factura: ",factura.estadoId );
+      if(factura.estadoId == 5){
+        
+        factura.procesar= true;
+      }
+      if(factura.estadoId == 10){
+        factura.pausar= true;
+      }
+      });
   }
 
 

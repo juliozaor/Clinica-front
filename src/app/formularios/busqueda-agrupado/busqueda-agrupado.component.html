@@ -107,10 +107,10 @@
           <td>{{ factura.RPA_FOR_FECHATENCION }}</td>
           <td>{{ factura.VALORCTA }}</td>            
             <td>
-              <input type="checkbox" [(ngModel)]="factura.procesar" name="procesar_{{ factura.RPA_FOR_NUMERFORMU }}" (change)="uncheckOther('procesar', factura.RPA_FOR_NUMERFORMU!)">
+              <input type="checkbox" [(ngModel)]="factura.procesar" name="procesar_{{ factura.RPA_FOR_NUMERFORMU }}" (change)="uncheckOther('procesar', factura.RPA_FOR_NUMERFORMU!)" [disabled]="factura.procesar || factura.pausar">
             </td>
             <td>
-              <input type="checkbox" [(ngModel)]="factura.pausar" name="pausar_{{ factura.RPA_FOR_NUMERFORMU }}" (change)="uncheckOther('pausar', factura.RPA_FOR_NUMERFORMU!)">
+              <input type="checkbox" [(ngModel)]="factura.pausar" name="pausar_{{ factura.RPA_FOR_NUMERFORMU }}" (change)="uncheckOther('pausar', factura.RPA_FOR_NUMERFORMU!)" [disabled]="factura.procesar || factura.pausar">
             </td>
           <td width="10px">
             <span class="cursor-pointer">

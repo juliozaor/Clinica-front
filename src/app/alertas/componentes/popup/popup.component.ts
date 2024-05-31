@@ -42,7 +42,7 @@ export class PopupComponent {
   }
 
   public abrirPopupFallido(titulo:string, info?:string){
-    console.log({titulo,info});
+/*     console.log({titulo,info}); */
     
     this.infoFallido = info
     this.tituloFallido = titulo
