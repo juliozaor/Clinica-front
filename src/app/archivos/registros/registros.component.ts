@@ -152,6 +152,11 @@ eliminarArchivo(nombre:string, factura:string, id:number){
           this.popup.abrirPopupExitoso(respuesta.mensaje)
           this.paginadorReportes.refrescar()
         },
+        error: (err)=>{        
+          Swal.close();
+          
+          this.popup.abrirPopupFallido(err.error.text)
+        }
       });
     }
    

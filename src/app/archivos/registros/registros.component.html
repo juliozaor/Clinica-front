@@ -91,27 +91,31 @@
         </tr>
     </thead>
     <tbody class="fs-12px">
-        <tr *ngFor="let registro of registroRpa ; let i = index">            
-          
-            <td class="celda-centrada">{{ registro.id}} </td>
+      <ng-container *ngIf="registroRpa.length > 0; else noData">
+        <ng-container *ngFor="let registro of registroRpa">
+          <tr *ngIf="registro.nombre_pdf">
+            <td class="celda-centrada">{{ registro.id }} </td>
             <td class="celda-centrada">{{ registro.nombre_pdf }} </td>
             <td class="celda-centrada">{{ registro.estado }} </td>
-            <td class="celda-centrada">{{ registro.tipo_soporte }} </td>  
+            <td class="celda-centrada">{{ registro.tipo_soporte }} </td>
             <td class="celda-centrada">{{ registro.hora_inicio }} </td>
-            <td class="celda-centrada">{{ registro.hora_fin }} </td>  
-            <td class="celda-centrada" *ngIf="registro.nombre_pdf">
+            <td class="celda-centrada">{{ registro.hora_fin }} </td>
+            <td class="celda-centrada">
               <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 1)" title="Visualizar archivo"><mat-icon>file_open</mat-icon> </span>
               <span class="cursor-pointer" (click)="obtenerArchivo(registro.nombre_pdf, registro.factura, 2)" title="Descargar archivo"><mat-icon>file_download</mat-icon> </span>
               <span class="cursor-pointer" (click)="actualizarArchivo(registro.nombre_pdf, registro.factura)" title="Actualizar archivo"><mat-icon>drive_file_move</mat-icon> </span>
               <span *ngIf="estadoRol" class="cursor-pointer" (click)="eliminarArchivo(registro.nombre_pdf, registro.factura, registro.id)" title="Eliminar archivo"><mat-icon>delete</mat-icon> </span>
             </td>
-           
-           
+          </tr>
+        </ng-container>
+      </ng-container>
+      <ng-template #noData>
+        <tr>
+          <td colspan="7">No se encontraron datos.</td>
         </tr>
-        <tr *ngIf="registroRpa.length === 0">
-          <td colspan="6">No se encontraron datos.</td>
-      </tr>
+      </ng-template>
     </tbody>
+    
 </table>
 
 
